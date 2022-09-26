@@ -13,7 +13,7 @@ fruit_series
 len(fruit_series)
 
 #2. Output only the index from fruits.
-fruit_series.index
+list(fruit_series.index)
 
 #3. Output only the values from fruits.
 fruit_series.values
@@ -64,8 +64,7 @@ fruit_series[fruit_series.str.len().idmax()]
 fruit_series[fruit_series.str.len() >= 5]
 
 #6. Find the fruit(s) containing the letter "o" two or more times.
-fruit_series.str.count('o') >= 2 
-
+fruits[fruit_series.str.count('o') >= 2]
 #7. Write the code to get only the string values containing the substring "berry".
 fruit_series[fruit_series.str.contains('berry')]
 
@@ -75,4 +74,43 @@ fruit_series[fruit_series.str.contains('apple')]
 #9. Which string value contains the most vowels?
 fruit_series.str.count('[aeiou]').max()
 
+############################################    EXERCISE 3    #############################################
+#1. Which letter occurs the most frequently in the letters Series?
+letters.value_counts().head(1)
+
+#2. Which letter occurs the Least frequently?
+letters.value_counts().nsmallest(n=1, keep = 'all')
+
+#3. How many vowels are in the Series?
+
+def is_vowel(some_word):
+    return some_word in ['a', 'e', 'i', 'o', 'u']
+letters.str.lower().apply(is_vowel).sum()
+
+#4. How many consonants are in the Series?
+~letters.str.lower().apply(is_vowel)
+
+#5. Create a Series that has all of the same letters but uppercased.
+letters.str.upper()
+
+#6. Create a bar plot of the frequencies of the 6 most commonly occuring letters.
+letters.value_counts().head(6).plot(kind='barh')
+plt.title('Top 6 letters')
+plt.show()
+
+#1. What is the data type of the numbers Series?
+
+#2. How many elements are in the number Series?
+numbers.size
+#3. Perform the necessary manipulations by accessing Series attributes and methods to convert the numbers Series to a numeric data type.
+numbers.str.replace('$', '').str.replace(',', '').astype(float)
+#4. Run the code to discover the maximum value from the Series.
+
+#5. Run the code to discover the minimum value from the Series.
+
+#6. What is the range of the values in the Series?
+
+#7. Bin the data into 4 equally sized intervals or bins and output how many values fall into each bin.
+
+#8.Plot the binned data in a meaningful way. Be sure to include a title and axis labels.
 
